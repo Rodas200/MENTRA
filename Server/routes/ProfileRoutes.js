@@ -3,7 +3,7 @@ const router = express.Router();
 module.exports = router;
 const upload = require("../middleware/uploadMiddleware");
 
-const User = require("../models/User");
+const User = require("../models/user");
 const protect = require("../middleware/authMiddleware");
 
 router.put("/update", protect, async (req, res) => {

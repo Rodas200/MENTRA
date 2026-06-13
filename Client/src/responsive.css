@@ -1,0 +1,73 @@
+/* Global responsive overrides (NO logic/JSX changes)
+   Additive file imported from index.css.
+*/
+
+:root {
+  --bbv-pad-x: 20px;
+  --bbv-pad-y: 14px;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+  /* Navbar: reduce padding + allow wrapping */
+  nav[style*="borderBottom"].flex {
+    padding-left: var(--bbv-pad-x) !important;
+    padding-right: var(--bbv-pad-x) !important;
+  }
+
+  /* Sidebar+Main wrapper */
+  .flex.flex-1 {
+    /* keep existing flex-1 sizing but stack on mobile */
+    flex-direction: column !important;
+  }
+
+  /* Sidebar sizing overrides (various sidebars use w-80 / w-100) */
+  aside {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(30, 37, 48, 1) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  /* Main padding reductions */
+  main[class*="p-8"] {
+    padding: 20px !important;
+  }
+
+  /* Reduce big headings */
+  h1[class*="text-4xl"] {
+    font-size: 1.75rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Tables / grid-like rows should scroll instead of overflowing */
+  .overflow-hidden {
+    overflow-x: auto !important;
+  }
+
+  /* Grid containers: prefer single column on narrow screens */
+  .grid {
+    gap: 12px !important;
+  }
+}
+
+/* Extra small tweaks */
+@media (max-width: 480px) {
+  :root {
+    --bbv-pad-x: 14px;
+  }
+
+  main[class*="p-8"] {
+    padding: 14px !important;
+  }
+
+  /* Modal: ensure it fits screen */
+  .fixed.inset-0 .max-w-md {
+    max-width: calc(100vw - 24px) !important;
+  }
+}
+

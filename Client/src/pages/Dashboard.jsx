@@ -163,15 +163,18 @@ export default function Dashboard() {
     navigate("/");
   };
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#0d1117", fontFamily: "'Segoe UI', sans-serif" }}>
+    <div
+      className="min-h-screen flex flex-col overflow-x-hidden"
+      style={{ backgroundColor: "#0d1117", fontFamily: "'Segoe UI', sans-serif" }}
+    >
       {/* Navbar */}
       <Navbar homePath="/dashboard" />
 
       {/* Body */}
-      <div className="flex flex-1">
-        {/* Sidebar */}
+      <div className="flex flex-1 flex-col lg:flex-row">
+        {/* Sidebar (Desktop) */}
         <aside
-          className="w-100 shrink-0 flex flex-col justify-between py-8 px-6"
+          className="hidden lg:flex w-100 shrink-0 flex-col justify-between py-8 px-6"
           style={{ backgroundColor: "#0d1117", position: "sticky", borderRight: "1px solid #1e2530" }}
         >
           <div>
@@ -210,9 +213,15 @@ export default function Dashboard() {
         </aside>
 
         {/* Main */}
-        <main className="flex-1 p-8 overflow-y-auto" style={{ backgroundColor: "#111827" }}>
+        <main
+          className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:p-8"
+          style={{ backgroundColor: "#111827" }}
+        >
           {/* Heading */}
-          <h1 className="text-white font-black text-4xl mb-2" style={{ fontFamily: "'Segoe UI', sans-serif" }}>
+          <h1
+            className="text-white font-black text-2xl sm:text-3xl lg:text-4xl mb-2"
+            style={{ fontFamily: "'Segoe UI', sans-serif" }}
+          >
             welcome Back, {user?.name}!
           </h1>
           <p className="text-sm mb-8" style={{ color: "#8a9ab5" }}>
@@ -220,17 +229,20 @@ export default function Dashboard() {
           </p>
 
           {/* Stat Cards */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
             {stats.map((s) => (
               <div
                 key={s.label}
                 className="rounded-2xl p-6 h-40"
                 style={{ backgroundColor: s.bg, border: `1px solid ${s.border}` }}
               >
-                <p className="text-md font-semibold tracking-widest mb-4" style={{ color: s.labelColor }}>
+                <p
+                  className="text-md font-semibold tracking-widest mb-4 wrap-break-word"
+                  style={{ color: s.labelColor }}
+                >
                   {s.label}
                 </p>
-                <p className="text-5xl font-black" style={{ color: s.valueColor }}>
+                <p className="text-4xl sm:text-5xl font-black" style={{ color: s.valueColor }}>
                   {s.value}
                 </p>
               </div>
