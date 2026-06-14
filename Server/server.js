@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
 const requestRoutes = require("./routes/requestRoutes");
 const adviceRoutes = require("./routes/adviceRoutes");
-const profileRoutes = require("./routes/profileRoutes");
+const profileRoutes = require("./routes/ProfileRoutes");
 const referralRoutes = require("./routes/referralRoutes");
 
 const app = express();
