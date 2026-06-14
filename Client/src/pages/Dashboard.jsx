@@ -222,7 +222,8 @@ export default function Dashboard() {
             className="text-white font-black text-2xl sm:text-3xl lg:text-4xl mb-2"
             style={{ fontFamily: "'Segoe UI', sans-serif" }}
           >
-            welcome Back, {user?.name}!
+            
+          Welcome Back, {user?.name}!
           </h1>
           <p className="text-sm mb-8" style={{ color: "#8a9ab5" }}>
             Track the status of your referral requests and celebrate your wins.
