@@ -27,6 +27,7 @@ const IconInput = ({
   placeholder,
   value,
   onChange,
+  readOnly = false,
 }) => {
   return (
     <input
@@ -34,6 +35,7 @@ const IconInput = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      readOnly={readOnly}
       style={{
         width: "100%",
         background:  readOnly ? "#1a2033" :"#121827",
@@ -404,19 +406,22 @@ export default function MentorProfile() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Previous Company</label>
-                <IconInput id="pc" icon="🏛️" placeholder="e.g. Infosys, Wipro, Flipkart…" value={previousCompany} onChange={e => setPreviousCompany(e.target.value)} />
+                <IconInput id="pc" icon="🏛️" placeholder="e.g. Infosys, Wipro, Flipkart…" value={previousCompany} onChange={e => setPreviousCompany(e.target.value)} 
                  readOnly={isPublicProfile}
+                 />
               </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Years of Experience</label>
-                <IconInput id="exp" icon="📅" type="number" min="0" max="50" placeholder="e.g. 5" value={experience} onChange={e => setExperience(e.target.value)} />
+                <IconInput id="exp" icon="📅" type="number" min="0" max="50" placeholder="e.g. 5" value={experience} onChange={e => setExperience(e.target.value)} 
                 readOnly={isPublicProfile}
+                />
                </div>
             </div>
             <div style={fieldStyle}>
               <label style={labelStyle}>Location</label>
-              <IconInput id="loc" icon="📍" placeholder="e.g.Noida, India" value={location} onChange={e => setLocation(e.target.value)} />
+              <IconInput id="loc" icon="📍" placeholder="e.g.Noida, India" value={location} onChange={e => setLocation(e.target.value)} 
               readOnly={isPublicProfile}
+              />
             </div>
           </div>
 
@@ -426,13 +431,15 @@ export default function MentorProfile() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
               <div style={fieldStyle}>
                 <label style={labelStyle}>LinkedIn Profile</label>
-                <IconInput id="li" icon="🔗" type="url" placeholder="https://linkedin.com/in/yourprofile" value={linkedin} onChange={e => setLinkedin(e.target.value)} />
+                <IconInput id="li" icon="🔗" type="url" placeholder="https://linkedin.com/in/yourprofile" value={linkedin} onChange={e => setLinkedin(e.target.value)} 
                 readOnly={isPublicProfile}
+                />
                </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>GitHub Profile</label>
-                <IconInput id="gh" icon="🐙" type="url" placeholder="https://github.com/yourusername" value={github} onChange={e => setGithub(e.target.value)} />
+                <IconInput id="gh" icon="🐙" type="url" placeholder="https://github.com/yourusername" value={github} onChange={e => setGithub(e.target.value)} 
                 readOnly={isPublicProfile}
+                />
               </div>
             </div>
           </div>
@@ -443,18 +450,21 @@ export default function MentorProfile() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 16 }}>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Total Referrals Given</label>
-                <IconInput id="tr" icon="🎯" type="number" min="0" placeholder="e.g. 24" value={totalReferrals} onChange={e => setTotalReferrals(e.target.value)} />
+                <IconInput id="tr" icon="🎯" type="number" min="0" placeholder="e.g. 24" value={totalReferrals} onChange={e => setTotalReferrals(e.target.value)} 
                 readOnly={isPublicProfile}
+                />
               </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Successful Placements</label>
-                <IconInput id="sp" icon="✅" type="number" min="0" placeholder="e.g. 18" value={successRef} onChange={e => setSuccessRef(e.target.value)} />
+                <IconInput id="sp" icon="✅" type="number" min="0" placeholder="e.g. 18" value={successRef} onChange={e => setSuccessRef(e.target.value)} 
                 readOnly={isPublicProfile}
+                />
              </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>In-Progress Referrals</label>
-                <IconInput id="ip" icon="⏳" type="number" min="0" placeholder="e.g. 6" value={inProgressRef} onChange={e => setInProgressRef(e.target.value)} />
+                <IconInput id="ip" icon="⏳" type="number" min="0" placeholder="e.g. 6" value={inProgressRef} onChange={e => setInProgressRef(e.target.value)} 
                 readOnly={isPublicProfile}
+                />
               </div>
             </div>
           </div>
