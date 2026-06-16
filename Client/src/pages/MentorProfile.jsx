@@ -257,7 +257,7 @@ export default function MentorProfile() {
 
 
         {/* ── MAIN ── */}
-        <main style={{ flex: 1, padding: "36px 40px", Width: "100%", overflowY: "auto", background: T.bgSecondary }}>
+        <main style={{ flex: 1, padding: "36px 40px",maxWidth:"1600px", Width: "100%", overflowY: "auto", background: T.bgSecondary }}>
 
           <h1 style={{ fontFamily: "'Sora', sans-serif", fontSize: 28, fontWeight: 700, color: T.textPrimary, marginBottom: 4 }}>
             {isPublicProfile ? "Mentor Profile" : "My Profile"}
