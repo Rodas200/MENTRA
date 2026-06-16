@@ -1,18 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Login from "./pages/Login";
+import Login from "./pages/Login.jsx";
 import Signup from "./pages/signup.jsx";
-import Dashboard from "./pages/Dashboard";
-import Profile from "./pages/Profile";
-import Requests from "./pages/Requests";
-import Advice from "./pages/Advice";
-import Connect from "./pages/Connect";
-import MentorDashboard from "./pages/MentorDashboard";
-import ReferredRequest from "./pages/ReferredRequest";
-import MentorProfile from "./pages/MentorProfile";
-import ReviewCenter from "./pages/ReviewCenter";
-import MentorConnect from "./pages/MentorConnect";
-import ProtectedRoute from "./ProtectedRoute";
+import Dashboard from "./pages/Dashboard.jsx";
+import Profile from "./pages/Profile.jsx";
+import Requests from "./pages/Requests.jsx";
+import Advice from "./pages/Advice.jsx";
+import Connect from "./pages/Connect.jsx";
+import MentorDashboard from "./pages/MentorDashboard.jsx";
+import ReferredRequest from "./pages/ReferredRequest.jsx";
+import MentorProfile from "./pages/MentorProfile.jsx";
+import ReviewCenter from "./pages/ReviewCenter.jsx";
+import MentorConnect from "./pages/MentorConnect.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
 
 function App() {

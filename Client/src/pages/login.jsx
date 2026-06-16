@@ -12,7 +12,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/users/login",
+        "https://mentra-ne9a.onrender.com/api/users/login",
         {
           email,
           password,
@@ -109,7 +109,7 @@ export default function Login() {
                   onChange={(e) =>
                     setEmail(e.target.value)
                   }
-                  placeholder="you@example.com"
+                  placeholder="rohandas@example.com"
                   className="w-full rounded-xl px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-gray-600"
                   style={{
                     backgroundColor: "#0d1117",

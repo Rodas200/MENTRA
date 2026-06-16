@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../componets/Navbar";
+import Navbar from "../componets/Navbar.jsx";
 
 
 
@@ -40,7 +40,7 @@ export default function MyRequests() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:5000/api/requests/my-requests",
+"https://mentra-ne9a.onrender.com/api/requests/my-requests",
 
         {
           headers: {

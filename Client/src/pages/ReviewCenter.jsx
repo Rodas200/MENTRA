@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Navbar from "../componets/Navbar";
-import MentorSidebar from "../componets/Mentorsidebar";
+import Navbar from "../componets/Navbar.jsx";
+import MentorSidebar from "../componets/Mentorsidebar.jsx";
 
 const SKILLS = ["DSA", "System Design", "Resume", "Projects", "Communication", "Behavioral", "Open Source", "Networking"];
 

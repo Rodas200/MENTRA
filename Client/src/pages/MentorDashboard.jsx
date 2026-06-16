@@ -1,5 +1,5 @@
-import Navbar from "../componets/Navbar";
-import MentorSidebar from "../componets/Mentorsidebar";
+import Navbar from "../componets/Navbar.jsx";
+import MentorSidebar from "../componets/Mentorsidebar.jsx";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -92,7 +92,7 @@ console.log("User Data:", user);
       
 
     const res = await axios.get(
-      "http://localhost:5000/api/requests/mentor-dashboard",
+      "https://mentra-ne9a.onrender.com/api/requests/mentor-dashboard",
       {
         headers: {
           Authorization: `Bearer ${token}`,

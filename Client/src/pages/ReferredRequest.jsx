@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../componets/Navbar";
-import MentorSidebar from "../componets/Mentorsidebar";
+import Navbar from "../componets/Navbar.jsx";
+import MentorSidebar from "../componets/Mentorsidebar.jsx";
 import { useNavigate } from "react-router-dom";
 
 
@@ -36,7 +36,7 @@ const fetchRequests = async () => {
     const token = localStorage.getItem("token");
 
     const res = await axios.get(
-      "http://localhost:5000/api/requests/mentor",
+      "https://mentra-ne9a.onrender.com/api/requests/mentor",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ const updateStatus = async (status) => {
     const token = localStorage.getItem("token");
 
     await axios.put(
-      `http://localhost:5000/api/requests/${selectedRequest._id}`,
+      `http://mentra-ne9a.onrender.com/api/requests/${selectedRequest._id}`,
       { status },
       {
         headers: {

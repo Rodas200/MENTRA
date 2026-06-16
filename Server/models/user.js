@@ -49,11 +49,18 @@ const userSchema = new mongoose.Schema(
       default: [],
     },
 
-     resume: {
+    resume: {
       type: String,
       default: "",
     },
- currentCompany: {
+
+    // Used by fresher UI (Profile.jsx) and userRoutes PUT /profile
+    portfolio: {
+      type: String,
+      default: "",
+    },
+
+    currentCompany: {
   type: String,
   default: "",
 },

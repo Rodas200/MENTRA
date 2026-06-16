@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../componets/Navbar";
+import Navbar from "../componets/Navbar.jsx";
 
 // Donut chart: Referred=25%, NeedsImprovement=12.5%, Pending=62.5%
 // Colors: green=#2ecc71, red=#e74c6f, dark gray=#2e3a4e
@@ -135,7 +135,7 @@ export default function Dashboard() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/requests/dashboard",
+        "https://mentra-ne9a.onrender.com/api/requests/dashboard",
          {
           
 

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../componets/Navbar";
+import Navbar from "../componets/Navbar.jsx";
 
 
 const navItems = [
@@ -43,8 +43,8 @@ export default function FresherProfile() {
     try {
       const token = localStorage.getItem("token");
       const url = id
-        ? `http://localhost:5000/api/profile/${id}`
-        : "http://localhost:5000/api/profile/me";
+`https://mentra-ne9a.onrender.com/api/profile/${id}`
+"https://mentra-ne9a.onrender.com/api/profile/me"
 
       const res = await axios.get(url, {
         headers: {
@@ -83,7 +83,7 @@ export default function FresherProfile() {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-        "http://localhost:5000/api/users/profile",
+"https://mentra-ne9a.onrender.com/api/users/profile",
         {
           bio,
           github,
@@ -139,7 +139,7 @@ export default function FresherProfile() {
       formData.append("resume", file);
 
       const res = await axios.post(
-        "http://localhost:5000/api/profile/upload-resume",
+"https://mentra-ne9a.onrender.com/api/profile/upload-resume",
         formData,
         {
           headers: {
@@ -259,7 +259,7 @@ export default function FresherProfile() {
                       <button
                         onClick={() =>
                           window.open(
-                            `http://localhost:5000/uploads/${resumeUrl}`,
+                            `http://mentra-ne9a.onrender.com/uploads/${resumeUrl}`,
                             "_blank"
                           )
                         }

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../componets/Navbar";
+import Navbar from "../componets/Navbar.jsx";
 
 const navItems = [
   { icon: "🏠", label: "Dashboard", path: "/dashboard", active: false},

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Navbar from "../componets/Navbar";
+import Navbar from "../componets/Navbar.jsx";
 
 // NOTE: This file was previously broken (missing variables like activeTab, sentReferrals, statusBadge, etc.).
 // It is now aligned with the known-good implementation from Client/src/pages/Connect.jsx.
@@ -46,9 +46,10 @@ export default function ConnectMentor() {
   const fetchMentors = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:5000/api/users/mentors", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+"https://mentra-ne9a.onrender.com/api/users/mentors",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
 
 
       setProfessional(res.data || []);
@@ -63,11 +64,11 @@ export default function ConnectMentor() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/requests/my-sent-requests",
+"https://mentra-ne9a.onrender.com/api/requests/my-sent-requests",
         {
           headers: {
             Authorization: `Bearer ${token}`,
-          },
+          }
         }
       );
 
@@ -106,7 +107,7 @@ export default function ConnectMentor() {
       const token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:5000/api/requests",
+        "https://mentra-ne9a.onrender.com/api/requests",
         {
           mentorId: requestModal._id,
           desiredRole: jobRole,

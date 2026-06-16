@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../componets/Navbar";
-import MentorSidebar from "../componets/Mentorsidebar";
+import Navbar from "../componets/Navbar.jsx";
+import MentorSidebar from "../componets/Mentorsidebar.jsx";
 import axios from "axios";
 
 
@@ -31,7 +31,7 @@ export default function ConnectMentor() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://localhost:5000/api/users/mentors",
+        "https://mentra-ne9a.onrender.com/api/users/mentors",
         {
           headers: {
             Authorization: `Bearer ${token}`,

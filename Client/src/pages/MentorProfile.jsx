@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../componets/Navbar";
+import Navbar from "../componets/Navbar.jsx";
 import axios from "axios";
-import MentorSidebar from "../componets/Mentorsidebar";
+import MentorSidebar from "../componets/Mentorsidebar.jsx";
 
 
 
@@ -87,8 +87,9 @@ export default function MentorProfile() {
       console.log("TOKEN =", token);
 
       const url = id
-  ? `http://localhost:5000/api/users/${id}`
-  : "http://localhost:5000/api/users/profile";
+        ? `https://mentra-ne9a.onrender.com/api/profile/${id}`
+        : "https://mentra-ne9a.onrender.com/api/profile/me";
+
 
       console.log("URL =", url);
 
@@ -148,7 +149,8 @@ export default function MentorProfile() {
       });
 
       await axios.put(
-        "http://localhost:5000/api/users/mentor-profile",
+        "https://mentra-ne9a.onrender.com/api/profile/mentor-update",
+
         {
 
           mentorBio: bio,

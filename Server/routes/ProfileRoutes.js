@@ -83,8 +83,8 @@ router.get("/:id", async (req, res) => {
       });
     }
 
-    // Keep response shape compatible with frontend expectations
-    res.json({ user });
+    // Normalize response shape with GET /me and avoid frontend parsing issues
+    res.json(user);
   } catch (error) {
     res.status(500).json({
       message: error.message,
