@@ -4,45 +4,26 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 
-const stats = [
-  {
-    label: "REQUESTS PENDING",
-    value: 2,
-    bg: "#1a2235",
-    border: "#2e3a4e",
-    valueColor: "#ffffff",
-    labelColor: "#8a9ab5",
-  },
-  {
-    label: "SUCCESSFULLY REFERRED",
-    value: 1,
-    bg: "#0d2420",
-    border: "#1a4a3a",
-    valueColor: "#2ecc71",
-    labelColor: "#2ecc71",
-  },
-  {
-    label: "NEEDS IMPROVEMENT",
-    value: 1,
-    bg: "#2a0e1a",
-    border: "#4a1a2a",
-    valueColor: "#e74c6f",
-    labelColor: "#e74c6f",
-  },
-];
+function DonutChart({
+  pending,
+  referred,
+  needsImprovement,
+}) {
+  console.log("CHART DATA =", {
+    pending,
+    referred,
+    needsImprovement,
+  });
 
-function DonutChart() {
   const cx = 150;
   const cy = 150;
   const R = 130;
   const r = 90;
 
-
-  // Segments: Referred=25%, NeedsImprovement=25%, Pending=50%
-  // Total = 4 parts. Each part = 90deg
-  // Referred: -90deg to 0deg (top to right)
-  // NeedsImprovement: 0deg to 90deg (right to bottom)
-  // Pending: 90deg to 270deg (bottom to top, going left)
+  const total = pending + referred + needsImprovement;
+  const referredAngle = (referred / total) * 360;
+  const needsAngle = (needsImprovement / total) * 360;
+  const pendingAngle = (pending / total) * 360;
 
   const toRad = (deg) => (deg * Math.PI) / 180;
 
@@ -62,85 +43,95 @@ function DonutChart() {
 
   return (
     <svg width="350" height="350" viewBox="0 0 300 300">
-      {arc(-90, 0, "#2ecc71")}
-      {arc(0, 90, "#e74c6f")}
-      {arc(90, 270, "#3a4a5e")}
-      {/* Punch hole */}
+      {arc(-90, -90 + referredAngle, "#2ecc71")}
+
+      {arc(
+        -90 + referredAngle,
+        -90 + referredAngle + needsAngle,
+        "#e74c6f"
+      )}
+
+      {arc(
+        -90 + referredAngle + needsAngle,
+        270,
+        "#3a4a5e"
+      )}
       <circle cx={cx} cy={cy} r={r} fill="#1a2235" />
     </svg>
   );
 }
 
-export default function MentorDashboard() {
- const [dashboardData, setDashboardData] = useState({
-  pending: 0,
-  referred: 0,
-  needsImprovement: 0,
-  recentRequests: [],
-});
 
-const user = JSON.parse(localStorage.getItem("user"));
-console.log("User Data:", user);
+export default function MentorDashboard() {
+  const [dashboardData, setDashboardData] = useState({
+    pending: 0,
+    referred: 0,
+    needsImprovement: 0,
+    recentRequests: [],
+  });
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log("User Data:", user);
 
   const fetchDashboard = async () => {
-      console.log("fetchDashboard running");
+    console.log("fetchDashboard running");
     try {
       const token = localStorage.getItem("token");
 
-      
+
       console.log("After API Call");
-      
 
-    const res = await axios.get(
-      "https://mentra-ne9a.onrender.com/api/requests/mentor-dashboard",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
 
-       console.log("After API Call");
-       console.log("Dashboard Data:", res.data);
+      const res = await axios.get(
+        "https://mentra-ne9a.onrender.com/api/requests/mentor-dashboard",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("After API Call");
+      console.log("Dashboard Data:", res.data);
       setDashboardData(res.data);
-     
-    }catch (error) {
-  console.log("Dashboard Error:", error.response?.data);
-   console.log(error);
-};
-    
+
+    } catch (error) {
+      console.log("Dashboard Error:", error.response?.data);
+      console.log(error);
+    };
+
   };
 
-     useEffect(() => {
-     fetchDashboard();
-},   []);
+  useEffect(() => {
+    fetchDashboard();
+  }, []);
 
-const stats = [
-  {
-    label: "REQUESTS PENDING",
-    value: dashboardData.pending,
-    bg: "#1a2235",
-    border: "#2e3a4e",
-    valueColor: "#ffffff",
-    labelColor: "#8a9ab5",
-  },
-  {
-    label: "SUCCESSFULLY REFERRED",
-    value: dashboardData.referred,
-    bg: "#0d2420",
-    border: "#1a4a3a",
-    valueColor: "#2ecc71",
-    labelColor: "#2ecc71",
-  },
-  {
-    label: "NEEDS IMPROVEMENT",
-    value: dashboardData.needsImprovement,
-    bg: "#2a0e1a",
-    border: "#4a1a2a",
-    valueColor: "#e74c6f",
-    labelColor: "#e74c6f",
-  },
-];
+  const stats = [
+    {
+      label: "REQUESTS PENDING",
+      value: dashboardData.pending,
+      bg: "#1a2235",
+      border: "#2e3a4e",
+      valueColor: "#ffffff",
+      labelColor: "#8a9ab5",
+    },
+    {
+      label: "SUCCESSFULLY REFERRED",
+      value: dashboardData.referred,
+      bg: "#0d2420",
+      border: "#1a4a3a",
+      valueColor: "#2ecc71",
+      labelColor: "#2ecc71",
+    },
+    {
+      label: "NEEDS IMPROVEMENT",
+      value: dashboardData.needsImprovement,
+      bg: "#2a0e1a",
+      border: "#4a1a2a",
+      valueColor: "#e74c6f",
+      labelColor: "#e74c6f",
+    },
+  ];
 
   return (
     <div
@@ -193,7 +184,11 @@ const stats = [
           >
             <h2 className="text-white font-bold text-lg mb-6">Status Distribution</h2>
             <div className="flex flex-col items-center">
-              <DonutChart />
+              <DonutChart
+                pending={dashboardData.pending}
+                referred={dashboardData.referred}
+                needsImprovement={dashboardData.needsImprovement}
+              />
               {/* Legend */}
               <div className="flex items-center gap-6 mt-6">
                 <div className="flex items-center gap-2">
@@ -211,15 +206,15 @@ const stats = [
               </div>
             </div>
           </div>
-          
 
-              <div
+
+          <div
             className="rounded-2xl p-6 mt-7"
             style={{ backgroundColor: "#161c27", border: "1px solid #1e2a3a" }}
           >
             <h2 className="text-white font-bold text-lg mb-5">Recent Activity</h2>
             <div className="flex flex-col gap-3">
-            {dashboardData.recentRequests.map((item) => (
+              {dashboardData.recentRequests.map((item) => (
                 <div
                   key={item._id}
                   className="flex items-center justify-between px-5 py-4 rounded-xl"

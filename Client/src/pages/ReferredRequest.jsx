@@ -64,7 +64,7 @@ const updateStatus = async (status) => {
     const token = localStorage.getItem("token");
 
     await axios.put(
-      `http://mentra-ne9a.onrender.com/api/requests/${selectedRequest._id}`,
+      `https://mentra-ne9a.onrender.com/api/requests/${selectedRequest._id}`,
       { status },
       {
         headers: {
@@ -217,18 +217,16 @@ const updateStatus = async (status) => {
         {selectedRequest.message}
       </p>
 
-      <div className="flex gap-3 mt-5">
+      <div className="flex gap-2 mt-5">
       <button
         onClick={() =>
         navigate(`/profile/${selectedRequest.fresher._id}`)
     }
-         className="px-4 py-2 rounded-lg text-white mb-4"
+         className="px-4 py-2 rounded-lg text-white"
          style={{ backgroundColor: "#2563eb" }}
      >
            👤View Profile
         </button>
-
-     <div className="flex gap-3 mt-5"/>
        <button
     onClick={() => updateStatus("Referred")}
     className="px-4 py-2 rounded-lg text-white"
