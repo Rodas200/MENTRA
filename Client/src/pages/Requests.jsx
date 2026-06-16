@@ -40,7 +40,7 @@ export default function MyRequests() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-"https://mentra-ne9a.onrender.com/api/requests/my-requests",
+"https://mentra-ne9a.onrender.com/api/requests/my-sent-requests",
 
         {
           headers: {

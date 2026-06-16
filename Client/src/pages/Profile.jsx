@@ -103,6 +103,8 @@ export default function FresherProfile() {
     } catch (error) {
       console.log(error);
       alert("Error Saving Profile");
+      console.log(error.response?.status);
+  console.log(error.response?.data);
     }
   };
 
