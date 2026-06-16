@@ -105,11 +105,6 @@ router.put("/profile", protect, async (req, res) => {
       });
     }
 
-    if (user.role !== "fresher") {
-      return res.status(403).json({
-        message: "Only freshers can update this profile",
-      });
-    }
 
     user.bio = bio ?? user.bio;
     user.skills = skills ?? user.skills;
