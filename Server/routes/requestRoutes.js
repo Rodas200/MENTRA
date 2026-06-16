@@ -100,7 +100,7 @@ router.put("/:id", protect, async (req, res) => {
   }
 });
 
-router.get("/my-requests", protect, async (req, res) => {
+router.get("/my-sent-requests", protect, async (req, res) => {
   try {
     const requests = await Request.find({
       fresher: req.user._id,

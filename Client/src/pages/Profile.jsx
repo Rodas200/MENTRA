@@ -42,9 +42,9 @@ export default function FresherProfile() {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem("token");
-      const url = id
-`https://mentra-ne9a.onrender.com/api/profile/${id}`
-"https://mentra-ne9a.onrender.com/api/profile/me"
+      const url = id ?
+        `https://mentra-ne9a.onrender.com/api/profile/${id}`
+        : "https://mentra-ne9a.onrender.com/api/profile/me"
 
       const res = await axios.get(url, {
         headers: {
@@ -83,7 +83,7 @@ export default function FresherProfile() {
       const token = localStorage.getItem("token");
 
       const res = await axios.put(
-"https://mentra-ne9a.onrender.com/api/users/profile",
+        "https://mentra-ne9a.onrender.com/api/users/profile",
         {
           bio,
           github,
@@ -139,7 +139,7 @@ export default function FresherProfile() {
       formData.append("resume", file);
 
       const res = await axios.post(
-"https://mentra-ne9a.onrender.com/api/profile/upload-resume",
+        "https://mentra-ne9a.onrender.com/api/profile/upload-resume",
         formData,
         {
           headers: {
@@ -194,7 +194,7 @@ export default function FresherProfile() {
           <h1 className="text-white font-black text-4xl mb-2">My Profile</h1>
           <p className="text-sm mb-8" style={{ color: "#8a9ab5" }}>Keep your profile updated to get better referral matches.</p>
 
-          <div className= "clfx flex-col gap-6">
+          <div className="clfx flex-col gap-6">
 
             {/* Avatar + Name Row */}
             <div className="rounded-2xl p-6 flex items-center gap-6" style={{ backgroundColor: "#161c27", border: "1px solid #1e2a3a" }}>
@@ -259,7 +259,7 @@ export default function FresherProfile() {
                       <button
                         onClick={() =>
                           window.open(
-                            `http://mentra-ne9a.onrender.com/uploads/${resumeUrl}`,
+                            `https://mentra-ne9a.onrender.com/uploads/${resumeUrl}`,
                             "_blank"
                           )
                         }
