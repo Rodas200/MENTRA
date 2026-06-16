@@ -36,13 +36,14 @@ const IconInput = ({
       onChange={onChange}
       style={{
         width: "100%",
-        background: "#121827",
+        background:  readOnly ? "#1a2033" :"#121827",
         border: "1px solid #252d42",
         borderRadius: "8px",
         color: "#e8eaf0",
         padding: "10px 14px",
         fontSize: "14px",
         outline: "none",
+         cursor: readOnly ? "not-allowed" : "text",
       }}
     />
   );
@@ -385,6 +386,7 @@ export default function MentorProfile() {
                   placeholder="e.g. Google"
                   value={currentCompany}
                   onChange={(e) => setCurrentCompany(e.target.value)}
+                  readOnly={isPublicProfile}
                 />
               </div>
               <div style={fieldStyle}>
@@ -395,6 +397,7 @@ export default function MentorProfile() {
                   placeholder="e.g.software developer."
                   value={currentRole}
                   onChange={(e) => setCurrentRole(e.target.value)}
+                  readOnly={isPublicProfile}
                 />
               </div>
             </div>
@@ -402,15 +405,18 @@ export default function MentorProfile() {
               <div style={fieldStyle}>
                 <label style={labelStyle}>Previous Company</label>
                 <IconInput id="pc" icon="🏛️" placeholder="e.g. Infosys, Wipro, Flipkart…" value={previousCompany} onChange={e => setPreviousCompany(e.target.value)} />
+                 readOnly={isPublicProfile}
               </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Years of Experience</label>
                 <IconInput id="exp" icon="📅" type="number" min="0" max="50" placeholder="e.g. 5" value={experience} onChange={e => setExperience(e.target.value)} />
-              </div>
+                readOnly={isPublicProfile}
+               </div>
             </div>
             <div style={fieldStyle}>
               <label style={labelStyle}>Location</label>
-              <IconInput id="loc" icon="📍" placeholder="e.g. Bengaluru, India" value={location} onChange={e => setLocation(e.target.value)} />
+              <IconInput id="loc" icon="📍" placeholder="e.g.Noida, India" value={location} onChange={e => setLocation(e.target.value)} />
+              readOnly={isPublicProfile}
             </div>
           </div>
 
@@ -421,10 +427,12 @@ export default function MentorProfile() {
               <div style={fieldStyle}>
                 <label style={labelStyle}>LinkedIn Profile</label>
                 <IconInput id="li" icon="🔗" type="url" placeholder="https://linkedin.com/in/yourprofile" value={linkedin} onChange={e => setLinkedin(e.target.value)} />
-              </div>
+                readOnly={isPublicProfile}
+               </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>GitHub Profile</label>
                 <IconInput id="gh" icon="🐙" type="url" placeholder="https://github.com/yourusername" value={github} onChange={e => setGithub(e.target.value)} />
+                readOnly={isPublicProfile}
               </div>
             </div>
           </div>
@@ -436,14 +444,17 @@ export default function MentorProfile() {
               <div style={fieldStyle}>
                 <label style={labelStyle}>Total Referrals Given</label>
                 <IconInput id="tr" icon="🎯" type="number" min="0" placeholder="e.g. 24" value={totalReferrals} onChange={e => setTotalReferrals(e.target.value)} />
+                readOnly={isPublicProfile}
               </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>Successful Placements</label>
                 <IconInput id="sp" icon="✅" type="number" min="0" placeholder="e.g. 18" value={successRef} onChange={e => setSuccessRef(e.target.value)} />
-              </div>
+                readOnly={isPublicProfile}
+             </div>
               <div style={fieldStyle}>
                 <label style={labelStyle}>In-Progress Referrals</label>
                 <IconInput id="ip" icon="⏳" type="number" min="0" placeholder="e.g. 6" value={inProgressRef} onChange={e => setInProgressRef(e.target.value)} />
+                readOnly={isPublicProfile}
               </div>
             </div>
           </div>

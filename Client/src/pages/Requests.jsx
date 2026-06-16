@@ -66,7 +66,7 @@ export default function MyRequests() {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#0d1117", fontFamily: "'Segoe UI', sans-serif" }}>
       {/* Navbar */}
-      <Navbar homePath="/requests" />
+      <Navbar homePath="/dashboard"/>
 
       {/* Body */}
       <div className="flex flex-1">

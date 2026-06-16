@@ -184,7 +184,7 @@ export default function ConnectMentor() {
       style={{ backgroundColor: "#0d1117", fontFamily: "'Segoe UI', sans-serif" }}
     >
       {/* Navbar */}
-      <Navbar homePath="/connect" />
+      <Navbar homePath="/dashboard" />
 
       {/* Body */}
       <div className="flex flex-1">

@@ -125,7 +125,7 @@ export default function Signup() {
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Ankit Sharma"
+                  placeholder="Rohan Das"
                   className="w-full rounded-xl px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-gray-600"
                   style={{ backgroundColor: "#0d1117", border: "1px solid #2e3a4e" }}
                 />
@@ -140,7 +140,7 @@ export default function Signup() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
+                  placeholder="rohan14xample.com"
                   className="w-full rounded-xl px-4 py-3 text-sm text-white outline-none transition-all placeholder:text-gray-600"
                   style={{ backgroundColor: "#0d1117", border: "1px solid #2e3a4e" }}
                 />
