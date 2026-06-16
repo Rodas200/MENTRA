@@ -46,16 +46,20 @@ export default function ConnectMentor() {
   const fetchMentors = async () => {
     try {
       const token = localStorage.getItem("token");
-"https://mentra-ne9a.onrender.com/api/users/mentors",
+      const res = await axios.get(
+        "https://mentra-ne9a.onrender.com/api/users/mentors",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
+      );
 
 
       setProfessional(res.data || []);
-
     } catch (error) {
       console.log(error);
+      console.log("STATUS =", error.response?.status);
+  console.log("URL =", error.config?.url);
+  console.log("DATA =", error.response?.data);
     }
   };
 
@@ -78,6 +82,9 @@ export default function ConnectMentor() {
 
     } catch (error) {
       console.log(error);
+      console.log("STATUS =", error.response?.status);
+  console.log("URL =", error.config?.url);
+  console.log("DATA =", error.response?.data);
     }
   };
 
@@ -142,6 +149,9 @@ export default function ConnectMentor() {
     } catch (error) {
       console.log(error.response?.data);
       alert(JSON.stringify(error.response?.data));
+      console.log("STATUS =", error.response?.status);
+  console.log("URL =", error.config?.url);
+  console.log("DATA =", error.response?.data);
     }
   };
 
