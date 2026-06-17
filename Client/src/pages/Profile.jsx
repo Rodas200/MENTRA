@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../componets/Navbar.jsx";
+import FresherSidebar from "../componets/FresherSidebar.jsx";
 
 
 const navItems = [
@@ -170,25 +171,7 @@ export default function FresherProfile() {
       <div className="flex flex-1">
         {/* Sidebar */}
         {!isPublicProfile && (
-          <aside className="w-100 shrink-0 flex flex-col justify-between py-6 px-4" style={{ backgroundColor: "#0d1117", borderRight: "1px solid #1e2530" }}>
-            <nav className="flex flex-col gap-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() =>
-                    navigate(item.path)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-lg font-semibold w-full text-left"
-                  style={item.active ? { backgroundColor: "#5b4fcf", color: "#fff" } : { color: "#8a9ab5" }}
-                >
-                  <span>{item.icon}</span>
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-            <button className="w-full py-3 rounded-xl text-lg font-semibold text-white" style={{ backgroundColor: "#1e293b" }}>
-              Switch to <strong>Mentor</strong>
-            </button>
-          </aside>
+         <FresherSidebar/>
         )}
 
         {/* Main */}

@@ -1,16 +1,26 @@
 import { useState } from "react";
+import Navbar from "../componets/Navbar.jsx";
+import MentorSidebar from "../componets/Mentorsidebar.jsx";
+import FresherSidebar from "../componets/FresherSidebar.jsx";
 
-const navItems = [
-  { icon: "🏠", label: "Dashboard", active: false },
-  { icon: "👤", label: "Profile", active: false },
-  { icon: "📋", label: "My Request", active: false },
-  { icon: "💬", label: "Connect", active: false },
-  { icon: "💡", label: "Advice", active: true },
-];
-
-export default function ComingSoon() {
+export default function ComingSoon({ title }) {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const user = JSON.parse(localStorage.getItem("user") || "{}");
+  const role = user?.role;
+
+  const navItems = [
+    { icon: "🏠", label: "Dashboard", active: false },
+    { icon: "👤", label: "Profile", active: false },
+    { icon: "📋", label: "My Request", active: false },
+    { icon: "💬", label: "Connect", active: false },
+    {
+      icon: role === "professional" ? "📝" : "💡",
+      label: role === "professional" ? "Review Center" : "Advice",
+      active: true,
+    },
+  ];
 
   const handleNotify = () => {
     if (email.trim()) {
@@ -24,67 +34,18 @@ export default function ComingSoon() {
       style={{ backgroundColor: "#0d1117", fontFamily: "'Segoe UI', sans-serif" }}
     >
       {/* Navbar */}
-      <nav
-        className="flex items-center justify-between px-8 py-4 shrink-0"
-        style={{ backgroundColor: "#0d1117", borderBottom: "1px solid #1e2530" }}
-      >
-        <div className="flex items-center gap-3">
-          <div
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-lg"
-            style={{ backgroundColor: "#5b4fcf" }}
-          >
-            M
-          </div>
-          <span className="text-white font-bold text-xl tracking-wide">Mentra</span>
-        </div>
-        <div className="flex items-center gap-8">
-          <a href="#" className="text-gray-300 hover:text-white text-sm">
-            <span>🏠</span> Home
-          </a>
-          <a href="#" className="text-gray-300 hover:text-white text-sm">
-            <span>📖</span> Resources
-          </a>
-        
-          <div className="w-px h-5 bg-gray-600" />
-          <button
-            className="px-5 py-2 rounded-lg text-sm font-semibold text-white"
-            style={{ backgroundColor: "#1e2530", border: "1px solid #2e3a4e" }}
-          >
-            Login
-          </button>
-        </div>
-      </nav>
-
+      <Navbar
+        homePath={
+          role === "professional"
+            ? "/mentor/Dashboard"
+            : "/dashboard"
+        }
+      />
       {/* Body */}
       <div className="flex flex-1">
-        Sidebar
-        <aside
-          className="w-56 shrink-0 justify-between flex flex-col py-6 px-4"
-          style={{ backgroundColor: "#0d1117", borderRight: "1px solid #1e2530" }}
-        >
-          <nav className="flex flex-col gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold w-full text-left"
-                style={
-                  item.active
-                    ? { backgroundColor: "#5b4fcf", color: "#fff" }
-                    : { color: "#8a9ab5" }
-                }
-              >
-                <span>{item.icon}</span>
-                {item.label}
-              </button>
-            ))}
-          </nav>
-          <button
-            className="w-full py-3 rounded-xl text-sm font-semibold text-white"
-            style={{ backgroundColor: "#1e293b" }}
-          >
-            Switch to <strong>Mentor</strong>
-          </button>
-        </aside>
+          {role === "professional"
+    ? <MentorSidebar />
+    : <FresherSidebar />}
 
         {/* Main */}
         <main
@@ -130,16 +91,19 @@ export default function ComingSoon() {
               className="font-black text-4xl mb-4 leading-tight"
               style={{ color: "#ffffff" }}
             >
-              We're building something{" "}
-              <span style={{ color: "#a78bfa" }}>amazing</span> for you
+              {title}
+              <span style={{ color: "#a78bfa" }}> Coming Soon</span>
             </h1>
 
             {/* Subtext */}
-            <p className="text-sm mb-10 leading-relaxed" style={{ color: "#8a9ab5" }}>
-              This feature is currently under development. Our team is working
-              hard to bring you the best experience. Stay tuned — it'll be worth the wait!
+            <p
+              className="text-sm mb-10 leading-relaxed"
+              style={{ color: "#8a9ab5" }}
+            >
+              {role === "professional"
+                ? "We are building a powerful Review Center where mentors can review profiles, resumes, and provide feedback."
+                : "We are building an Advice Center where freshers can receive career guidance, interview tips, and improvement suggestions."}
             </p>
-
             {/* Progress */}
             <div className="w-full mb-10">
               <div className="flex justify-between text-xs mb-2" style={{ color: "#8a9ab5" }}>
@@ -162,11 +126,19 @@ export default function ComingSoon() {
 
             {/* What's coming cards */}
             <div className="grid grid-cols-3 gap-3 w-full mb-10">
-              {[
-                { icon: "💬", label: "Live Chat" },
-                { icon: "🤝", label: "Referrals" },
-                { icon: "📊", label: "Analytics" },
-              ].map((f) => (
+              {(
+                role === "professional"
+                  ? [
+                    { icon: "📄", label: "Resume Review" },
+                    { icon: "⭐", label: "Feedback" },
+                    { icon: "📊", label: "Review Analytics" },
+                  ]
+                  : [
+                    { icon: "💡", label: "Career Advice" },
+                    { icon: "🎯", label: "Interview Tips" },
+                    { icon: "📚", label: "Learning Path" },
+                  ]
+              ).map((f) => (
                 <div
                   key={f.label}
                   className="rounded-xl py-4 px-3 flex flex-col items-center gap-2"
@@ -176,7 +148,10 @@ export default function ComingSoon() {
                   }}
                 >
                   <span className="text-2xl">{f.icon}</span>
-                  <span className="text-xs font-semibold" style={{ color: "#8a9ab5" }}>
+                  <span
+                    className="text-xs font-semibold"
+                    style={{ color: "#8a9ab5" }}
+                  >
                     {f.label}
                   </span>
                 </div>

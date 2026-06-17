@@ -5,12 +5,10 @@ import Signup from "./pages/signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Profile from "./pages/Profile.jsx";
 import Requests from "./pages/Requests.jsx";
-import Advice from "./pages/Advice.jsx";
 import Connect from "./pages/Connect.jsx";
 import MentorDashboard from "./pages/MentorDashboard.jsx";
 import ReferredRequest from "./pages/ReferredRequest.jsx";
 import MentorProfile from "./pages/MentorProfile.jsx";
-import ReviewCenter from "./pages/ReviewCenter.jsx";
 import MentorConnect from "./pages/MentorConnect.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import ComingSoon from "./pages/ComingSoon.jsx";
@@ -58,14 +56,6 @@ function App() {
 
           }
         />
-        <Route
-          path="/advice"
-          element={
-            <ProtectedRoute>
-              <ComingSoon />
-            </ProtectedRoute>
-          }
-        />
 
         <Route
           path="/connect"
@@ -74,15 +64,40 @@ function App() {
               <Connect />
             </ProtectedRoute>
           }
-        /><Route
+        />
+
+        <Route
+          path="/advice"
+          element={
+             <ProtectedRoute>
+          <ComingSoon title="Advice Center" />
+          </ProtectedRoute>}
+        />
+
+        <Route
+          path="/reviewcenter"
+          element={ <ProtectedRoute>
+            <ComingSoon title="Review Center" />
+            </ProtectedRoute>}
+        />
+
+        <Route
           path="/mentorProfile/:id"
           element={<MentorProfile />}
         />
-        <Route path="/mentor/Dashboard" element={<MentorDashboard />} />
-        <Route path="/referredRequest" element={<ReferredRequest />} />
-        <Route path="/mentorProfile" element={<MentorProfile />} />
-        <Route path="/reviewCenter" element={<ComingSoon />} />
-        <Route path="/mentorConnect" element={<MentorConnect />} />
+        <Route path="/mentor/Dashboard" element={
+          <ProtectedRoute><MentorDashboard />
+          </ProtectedRoute>} 
+          />
+        <Route path="/referredRequest" element={<ProtectedRoute><ReferredRequest />
+        </ProtectedRoute>}
+         />
+        <Route path="/mentorProfile" element={<ProtectedRoute><MentorProfile />
+        </ProtectedRoute>} 
+        />
+
+        <Route path="/mentorConnect" element={<ProtectedRoute><MentorConnect />
+        </ProtectedRoute>} />
 
       </Routes>
     </BrowserRouter>

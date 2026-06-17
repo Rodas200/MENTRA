@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../componets/Navbar.jsx";
+import FresherSidebar from "../componets/FresherSidebar.jsx";
 
 // Donut chart: Referred=25%, NeedsImprovement=12.5%, Pending=62.5%
 // Colors: green=#2ecc71, red=#e74c6f, dark gray=#2e3a4e
@@ -173,44 +174,7 @@ export default function Dashboard() {
       {/* Body */}
       <div className="flex flex-1 flex-col lg:flex-row">
         {/* Sidebar (Desktop) */}
-        <aside
-          className="hidden lg:flex w-100 shrink-0 flex-col justify-between py-8 px-6"
-          style={{ backgroundColor: "#0d1117", position: "sticky", borderRight: "1px solid #1e2530" }}
-        >
-          <div>
-            {/* Avatar placeholder */}
-
-
-            {/* Nav Items */}
-            <nav className="flex flex-col gap-1">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() =>
-                    navigate(item.path)}
-
-                  className="flex items-center gap-3 px-4 py-3 rounded-xl text-lg font-semibold w-full text-left transition-all"
-                  style={
-                    item.active
-                      ? { backgroundColor: "#5b4fcf", color: "#fff" }
-                      : { color: "#8a9ab5" }
-                  }
-                >
-                  <span>{item.icon}</span>
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-          </div>
-
-          {/* Switch to Professional */}
-          <button
-            className="w-full py-3 rounded-xl text-sm font-semibold text-white"
-            style={{ backgroundColor: "#1e293b" }}
-          >
-            Switch to <strong>Mentor</strong>
-          </button>
-        </aside>
+          <FresherSidebar/>
 
         {/* Main */}
         <main

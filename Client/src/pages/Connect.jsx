@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../componets/Navbar.jsx";
+import FresherSidebar from "../componets/FresherSidebar.jsx";
+
+
 
 // NOTE: This file was previously broken (missing variables like activeTab, sentReferrals, statusBadge, etc.).
 // It is now aligned with the known-good implementation from Client/src/pages/Connect.jsx.
@@ -189,35 +192,7 @@ export default function ConnectMentor() {
       {/* Body */}
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside
-          className="w-100 shrink-0 justify-between flex flex-col py-6 px-4"
-          style={{ backgroundColor: "#0d1117", borderRight: "1px solid #1e2530" }}
-        >
-          <nav className="flex flex-col gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => navigate(item.path)}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl text-lg font-semibold w-full text-left"
-                style={
-                  item.active
-                    ? { backgroundColor: "#5b4fcf", color: "#fff" }
-                    : { color: "#8a9ab5" }
-                }
-              >
-                <span>{item.icon}</span>
-                {item.label}
-              </button>
-            ))}
-          </nav>
-          <button
-            className="w-full py-3 rounded-xl text-sm font-semibold text-white"
-            style={{ backgroundColor: "#1e293b" }}
-          >
-            Switch to <strong>fresher</strong>
-          </button>
-        </aside>
-
+         <FresherSidebar/>
         {/* Main */}
         <main className="flex-1 p-8" style={{ backgroundColor: "#111827" }}>
           <h1 className="text-white font-black text-4xl mb-2">Network & Connect</h1>
