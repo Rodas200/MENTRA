@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-import appLogo from "../assets/appLogo.png";
+import appLogo from "../assets/app logo.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
