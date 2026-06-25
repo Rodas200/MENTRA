@@ -35,6 +35,8 @@ export default function FresherProfile() {
   const [email, setEmail] = useState("");
   const fileInputRef = useRef();
   const [photoPreview, setPhotoPreview] = useState(null);
+  
+
 
   useEffect(() => {
     fetchProfile();
@@ -409,9 +411,12 @@ export default function FresherProfile() {
               </div>
             </div>
 
+            <br></br>
+
             {/* Save Button */}
             <div className="flex justify-end pb-4">
               {!isPublicProfile && (
+
                 <button
                   onClick={handleSaveProfile}
                   className="px-10 py-3 rounded-xl text-white font-bold text-sm tracking-widest uppercase transition-opacity hover:opacity-90"

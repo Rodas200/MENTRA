@@ -85,13 +85,23 @@ function App() {
           path="/mentorProfile/:id"
           element={<MentorProfile />}
         />
-        <Route path="/mentor/Dashboard" element={
-          <ProtectedRoute><MentorDashboard />
-          </ProtectedRoute>} 
-          />
-        <Route path="/referredRequest" element={<ProtectedRoute><ReferredRequest />
-        </ProtectedRoute>}
-         />
+        <Route
+          path="/mentor/dashboard"
+          element={
+            <ProtectedRoute>
+              <MentorDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/referredRequest"
+          element={
+            <ProtectedRoute>
+              <ReferredRequest />
+            </ProtectedRoute>
+          }
+        />
+
         <Route path="/mentorProfile" element={<ProtectedRoute><MentorProfile />
         </ProtectedRoute>} 
         />
