@@ -411,7 +411,7 @@ export default function FresherProfile() {
               </div>
             </div>
 
-            <br></br>
+            
 
             {/* Save Button */}
             <div className="flex justify-end pb-4">
@@ -419,7 +419,7 @@ export default function FresherProfile() {
 
                 <button
                   onClick={handleSaveProfile}
-                  className="px-10 py-3 rounded-xl text-white font-bold text-sm tracking-widest uppercase transition-opacity hover:opacity-90"
+                  className="px-10 py-3 rounded-xl text-white mt-2 font-bold text-sm tracking-widest uppercase transition-opacity hover:opacity-90"
                   style={{ backgroundColor: "#5b4fcf" }}
                 >
                   Save Profile
