@@ -44,7 +44,7 @@ export default function Loader() {
       <img
         src={gifs[currentGif]}
         alt="loading"
-         className="w-10 sm:w-24 md:w-28 lg:w-32 h-auto"
+         className="w-10 sm:w-22 md:w-26 lg:w-30 h-auto"
       />
     </div>
   );
